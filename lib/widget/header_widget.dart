@@ -38,7 +38,9 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                     Icons.shopping_cart,
                     color: Colors.black,
                   ),
-                  onPressed: null)
+                  onPressed: () {
+                    print('Shopping cart clicked!');
+                  })
             ],
           ),
           Container(
