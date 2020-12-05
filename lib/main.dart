@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tea_app/screens/home_screen.dart';
+import 'package:tea_app/screens/main/home_screen.dart';
 
 void main() {
   runApp(MyApp());

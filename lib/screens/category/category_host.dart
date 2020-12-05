@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tea_app/screens/china_tab.dart';
-import 'package:tea_app/screens/india_tab.dart';
-import 'package:tea_app/screens/popular_tab.dart';
-import 'package:tea_app/screens/sriLanka_tab.dart';
+import 'package:tea_app/screens/category/china_tab.dart';
+import 'package:tea_app/screens/category/india_tab.dart';
+import 'package:tea_app/screens/category/popular_tab.dart';
+import 'package:tea_app/screens/category/sriLanka_tab.dart';
 
 class CategoryHost extends StatefulWidget {
   @override
@@ -11,13 +11,14 @@ class CategoryHost extends StatefulWidget {
 
 class _CategoryHostState extends State<CategoryHost>
     with TickerProviderStateMixin {
-  TabController controllerInFav;
+  TabController controllerInCategory;
 
   @override
   void initState() {
     super.initState();
-    controllerInFav = TabController(length: 4, vsync: this, initialIndex: 0);
-    controllerInFav.addListener(() {
+    controllerInCategory =
+        TabController(length: 4, vsync: this, initialIndex: 0);
+    controllerInCategory.addListener(() {
       _handleTabSelection();
     });
   }
@@ -32,23 +33,25 @@ class _CategoryHostState extends State<CategoryHost>
       resizeToAvoidBottomPadding: false,
       body: TabBarView(
         children: <Widget>[PopularTab(), ChinaTab(), IndiaTab(), SriLankaTab()],
-        controller: controllerInFav,
+        controller: controllerInCategory,
       ),
       appBar: TabBar(
         indicatorColor: Theme.of(context).primaryColor,
-        controller: controllerInFav,
+        controller: controllerInCategory,
+        labelColor: Theme.of(context).primaryColor,
+        unselectedLabelColor: Colors.black,
         tabs: <Tab>[
           Tab(
-            text: 'Popular',
+            text: 'POPULAR',
           ),
           Tab(
-            text: 'China',
+            text: 'CHINA',
           ),
           Tab(
-            text: 'India',
+            text: 'INDIA',
           ),
           Tab(
-            text: 'Sri Lanka',
+            text: 'SRI LANKA',
           )
         ],
       ),

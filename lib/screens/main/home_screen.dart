@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tea_app/screens/favorite_tab.dart';
-import 'package:tea_app/screens/settings_tab.dart';
-import 'package:tea_app/screens/start_tab.dart';
+import 'package:tea_app/screens/main/favorite_tab.dart';
+import 'package:tea_app/screens/main/settings_tab.dart';
+import 'package:tea_app/screens/main/start_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key, this.title}) : super(key: key);
