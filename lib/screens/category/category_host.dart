@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tea_app/generated/l10n.dart';
 import 'package:tea_app/screens/category/china_tab.dart';
 import 'package:tea_app/screens/category/india_tab.dart';
 import 'package:tea_app/screens/category/popular_tab.dart';
@@ -29,6 +30,8 @@ class _CategoryHostState extends State<CategoryHost>
 
   @override
   Widget build(BuildContext context) {
+    final delegate = S.of(context);
+
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       body: TabBarView(
@@ -42,16 +45,16 @@ class _CategoryHostState extends State<CategoryHost>
         unselectedLabelColor: Colors.black,
         tabs: <Tab>[
           Tab(
-            text: 'POPULAR',
+            text: '${delegate.PopularText}',
           ),
           Tab(
-            text: 'CHINA',
+            text: '${delegate.ChinaText}',
           ),
           Tab(
-            text: 'INDIA',
+            text: '${delegate.IndiaText}',
           ),
           Tab(
-            text: 'SRI LANKA',
+            text: '${delegate.SriLankaText}',
           )
         ],
       ),

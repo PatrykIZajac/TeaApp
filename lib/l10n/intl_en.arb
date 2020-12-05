@@ -1,5 +1,11 @@
 {
   "WelcomeText": "Welcome to",
   "ShopNameText": "Tea Shop",
-  "SearchText": "Search"
+  "SearchText": "Search",
+  "LanguageText": "Language",
+  "PopularText": "Popular",
+  "ChinaText": "China",
+  "IndiaText": "India",
+  "SriLankaText": "Sri Lanka",
+  "CurrencyText": "Currency"
 }

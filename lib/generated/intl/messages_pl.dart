@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a en locale. All the
+// This is a library that provides messages for a pl locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -17,18 +17,18 @@ final messages = new MessageLookup();
 typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
 class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'en';
+  String get localeName => 'pl';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "ChinaText" : MessageLookupByLibrary.simpleMessage("China"),
-    "CurrencyText" : MessageLookupByLibrary.simpleMessage("Currency"),
-    "IndiaText" : MessageLookupByLibrary.simpleMessage("India"),
-    "LanguageText" : MessageLookupByLibrary.simpleMessage("Language"),
-    "PopularText" : MessageLookupByLibrary.simpleMessage("Popular"),
-    "SearchText" : MessageLookupByLibrary.simpleMessage("Search"),
+    "ChinaText" : MessageLookupByLibrary.simpleMessage("Chiny"),
+    "CurrencyText" : MessageLookupByLibrary.simpleMessage("Waluta"),
+    "IndiaText" : MessageLookupByLibrary.simpleMessage("Indie"),
+    "LanguageText" : MessageLookupByLibrary.simpleMessage("Język"),
+    "PopularText" : MessageLookupByLibrary.simpleMessage("Popularne"),
+    "SearchText" : MessageLookupByLibrary.simpleMessage("Szukaj"),
     "ShopNameText" : MessageLookupByLibrary.simpleMessage("Tea Shop"),
     "SriLankaText" : MessageLookupByLibrary.simpleMessage("Sri Lanka"),
-    "WelcomeText" : MessageLookupByLibrary.simpleMessage("Welcome to")
+    "WelcomeText" : MessageLookupByLibrary.simpleMessage("Witamy w")
   };
 }

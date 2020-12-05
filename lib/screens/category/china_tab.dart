@@ -16,7 +16,7 @@ class _ChinaTabState extends State<ChinaTab> {
         padding: const EdgeInsets.fromLTRB(15, 30, 15, 0),
         child: ListView(
           children: <Widget>[
-            Center(child: Text('China')),
+            Center(child: Text('CHINA')),
           ],
         ),
       ),

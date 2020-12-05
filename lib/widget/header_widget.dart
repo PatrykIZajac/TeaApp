@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tea_app/generated/l10n.dart';
 
 class HeaderWidget extends StatefulWidget {
   @override
@@ -20,6 +21,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final delegate = S.of(context);
     return Container(
       child: Column(
         children: [
@@ -27,7 +29,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Welcome to',
+                '${delegate.WelcomeText}',
                 style: TextStyle(
                     fontSize: 25,
                     color: Colors.black,
@@ -46,7 +48,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           Container(
             alignment: Alignment.topLeft,
             child: Text(
-              'Tea Shop',
+              '${delegate.ShopNameText}',
               style: TextStyle(
                   fontSize: 45,
                   color: Color(0xFF11bb6c),
@@ -72,7 +74,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                     ),
                     disabledBorder: InputBorder.none,
                     border: InputBorder.none,
-                    hintText: 'Search',
+                    hintText: '${delegate.SearchText}',
                     hintStyle: TextStyle(fontSize: 20.0, color: Colors.black),
                   ),
                 ),

@@ -35,7 +35,95 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Welcome to`
+  String get WelcomeText {
+    return Intl.message(
+      'Welcome to',
+      name: 'WelcomeText',
+      desc: '',
+      args: [],
+    );
+  }
 
+  /// `Tea Shop`
+  String get ShopNameText {
+    return Intl.message(
+      'Tea Shop',
+      name: 'ShopNameText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get SearchText {
+    return Intl.message(
+      'Search',
+      name: 'SearchText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get LanguageText {
+    return Intl.message(
+      'Language',
+      name: 'LanguageText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Popular`
+  String get PopularText {
+    return Intl.message(
+      'Popular',
+      name: 'PopularText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `China`
+  String get ChinaText {
+    return Intl.message(
+      'China',
+      name: 'ChinaText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `India`
+  String get IndiaText {
+    return Intl.message(
+      'India',
+      name: 'IndiaText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sri Lanka`
+  String get SriLankaText {
+    return Intl.message(
+      'Sri Lanka',
+      name: 'SriLankaText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Currency`
+  String get CurrencyText {
+    return Intl.message(
+      'Currency',
+      name: 'CurrencyText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -44,6 +132,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'pl'),
     ];
   }
 
