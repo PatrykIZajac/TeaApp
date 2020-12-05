@@ -52,19 +52,19 @@ class _HomeScreen extends State<HomeScreen> with TickerProviderStateMixin {
           Tab(
             icon: Icon(
               Icons.favorite,
-              color: Colors.green,
+              color: Color(0xFF11bb6c),
             ),
           ),
           Tab(
             icon: Icon(
               Icons.home,
-              color: Colors.green,
+              color: Color(0xFF11bb6c),
             ),
           ),
           Tab(
             icon: Icon(
               Icons.settings,
-              color: Colors.green,
+              color: Color(0xFF11bb6c),
             ),
           )
         ],
