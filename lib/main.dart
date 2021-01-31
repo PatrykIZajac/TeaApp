@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:tea_app/database/cartDB.dart';
 import 'package:tea_app/local_storage/user_preferences.dart';
+import 'package:tea_app/providers/cart_provider.dart';
 import 'package:tea_app/providers/tea_provider.dart';
 import 'package:tea_app/screens/main/home_screen.dart';
 import 'generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Db().init();
   await UserPreferences().init();
   runApp(MultiProvider(
     providers: [
       ListenableProvider<TeaProvider>(create: (_) => TeaProvider()),
+      ListenableProvider<CartProvider>(create: (_)=> CartProvider()),
     ],
     child: MyApp(),
   ));

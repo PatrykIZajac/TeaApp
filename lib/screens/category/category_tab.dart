@@ -30,7 +30,9 @@ class _CategoryTabState extends State<CategoryTab>
     teas = await context
         .read<TeaProvider>()
         .getListOfTeasByCountryName(widget.countryName, forceDownload);
-    setState(() {});
+    if (this.mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -92,17 +94,22 @@ class _CategoryTabState extends State<CategoryTab>
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 15),
                             ),
-                            Container(
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white,
+                            InkWell(
+                              onTap: () {
+                                print("Tapped add button");
+                              },
+                              child: Container(
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                ),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: 1.0, color: Colors.grey[400]),
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Colors.grey[400]),
+                                width: 30,
                               ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 1.0, color: Colors.grey[400]),
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.grey[400]),
-                              width: 30,
                             ),
                           ],
                         ),
@@ -112,61 +119,6 @@ class _CategoryTabState extends State<CategoryTab>
                 ),
               );
             }),
-        // child: GridView.count(
-        //   crossAxisSpacing: 10,
-        //   mainAxisSpacing: 10,
-        //   crossAxisCount: 2,
-        //   children: List.generate(teas.length, (index) {
-        //     return Padding(
-        //       padding: const EdgeInsets.only(top: 20.0),
-        //       child: Card(
-        //         shape: RoundedRectangleBorder(
-        //           borderRadius: BorderRadius.circular(10),
-        //         ),
-        //         color: Color(0xFFF1F1F1),
-        //         child: InkWell(
-        //           splashColor: Theme.of(context).primaryColor,
-        //           onTap: () {
-        //             print('tapped on card');
-        //           },
-        //           child: Column(
-        //             children: [
-        //               Container(
-        //                 // decoration: BoxDecoration(
-        //                 //     border: Border.all(color: Colors.blueAccent)),
-        //                 child: Padding(
-        //                   padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-        //                   child: Image.network(
-        //                     teas[index].imgURL,
-        //                   ),
-        //                 ),
-        //               ),
-        //               Padding(
-        //                 padding: const EdgeInsets.only(top: 5.0),
-        //                 child: Text(teas[index].name,
-        //                     style: TextStyle(fontWeight: FontWeight.bold)),
-        //               ),
-        //               Padding(
-        //                 padding: const EdgeInsets.fromLTRB(20, 10, 10, 0),
-        //                 child: Row(
-        //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //                   children: [
-        //                     Text(
-        //                       teas[index].price.toString(),
-        //                       style: TextStyle(
-        //                           fontWeight: FontWeight.bold, fontSize: 15),
-        //                     ),
-        //                     Icon(Icons.add),
-        //                   ],
-        //                 ),
-        //               )
-        //             ],
-        //           ),
-        //         ),
-        //       ),
-        //     );
-        //   }),
-        // ),
       ),
     );
   }

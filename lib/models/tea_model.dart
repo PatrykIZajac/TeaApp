@@ -41,31 +41,4 @@ class TeaModel {
     data['description'] = this.description;
     return data;
   }
-
-  // Map<String, dynamic> toMap() {
-//   //   return {
-//   //     'id': id,
-//   //     'name': name,
-//   //     'price': price,
-//   //     'imgURL': imgURL,
-//   //     'brewTime': brewTime,
-//   //     'brewTemp': brewTemp,
-//   //     'originCountry': originCountry,
-//   //     'description': description,
-//   //   };
-//   // }
-//   //
-//   // static List<TeaModel> fromMap(List<Map<String, dynamic>> map) {
-//   //   return List.generate(map.length, (i) {
-//   //     return TeaModel(
-//   //         id: map[i]['id'],
-//   //         name: map[i]['name'],
-//   //         price: map[i]['price'],
-//   //         imgURL: map[i]['imgURL'],
-//   //         brewTime: map[i]['brewTime'],
-//   //         brewTemp: map[i]['brewTemp'],
-//   //         originCountry: map[i]['originCountry'],
-//   //         description: map[i]['description']);
-//   //   });
-//   // }
 }

@@ -27,6 +27,12 @@ class _CategoryHostState extends State<CategoryHost>
   }
 
   @override
+  void dispose() {
+    controllerInCategory.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final delegate = S.of(context);
 
@@ -34,7 +40,7 @@ class _CategoryHostState extends State<CategoryHost>
       resizeToAvoidBottomPadding: false,
       body: TabBarView(
         children: <Widget>[
-          PopularTab(),
+          PopularTab(countryName: 'popular'),
           CategoryTab(countryName: 'China'),
           CategoryTab(countryName: 'Brazil'),
           CategoryTab(countryName: 'Sri Lanka'),

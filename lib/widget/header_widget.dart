@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tea_app/generated/l10n.dart';
+import 'package:tea_app/providers/cart_provider.dart';
+import 'package:tea_app/screens/cart_screen.dart';
 
 class HeaderWidget extends StatefulWidget with PreferredSizeWidget {
   @override
@@ -40,14 +43,48 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
                 ),
-                IconButton(
-                    icon: Icon(
-                      Icons.shopping_cart,
-                      color: Colors.black,
-                    ),
-                    onPressed: () {
-                      print('Shopping cart clicked!');
-                    })
+                GestureDetector(
+                  child: Stack(
+                    alignment: Alignment.topCenter,
+                    children: <Widget>[
+                      Icon(
+                        Icons.shopping_cart,
+                        size: 36.0,
+                      ),
+                      if (Provider.of<CartProvider>(context, listen: false)
+                              .cart
+                              .length >
+                          0)
+                        Padding(
+                          padding: const EdgeInsets.only(left: 2.0),
+                          child: CircleAvatar(
+                            radius: 8.0,
+                            backgroundColor: Color(0xFF11bb6c),
+                            foregroundColor: Colors.white,
+                            child: Text(
+                              Provider.of<CartProvider>(context, listen: true)
+                                  .cart
+                                  .length
+                                  .toString(),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                  onTap: () {
+                    if (Provider.of<CartProvider>(context, listen: false)
+                        .cart
+                        .isNotEmpty)
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CartScreen()),
+                      );
+                  },
+                )
               ],
             ),
             Container(
