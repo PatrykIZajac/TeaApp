@@ -108,9 +108,9 @@ class _DetailsState extends State<Details> {
                       children: [
                         InkWell(
                           onTap: () {
-                            print('-');
+                            // print('-');
                             decrementCounter();
-                            print("counter: $counter");
+                            // print("counter: $counter");
                           },
                           child: Container(
                             child: Icon(Icons.remove),
@@ -130,9 +130,9 @@ class _DetailsState extends State<Details> {
                         ),
                         InkWell(
                           onTap: () {
-                            print('+');
+                            // print('+');
                             incrementCounter();
-                            print("counter: $counter");
+                            // print("counter: $counter");
                           },
                           child: Container(
                             child: Icon(Icons.add),
@@ -167,22 +167,15 @@ class _DetailsState extends State<Details> {
                           await Provider.of<CartProvider>(context,
                                   listen: false)
                               .updateById(obj, counter);
-                          print("UPDATE");
+                          // print("UPDATE");
                           Navigator.pop(context);
                         } else {
-                          print("ADD");
+                          // print("ADD");
                           await Provider.of<CartProvider>(context,
                                   listen: false)
                               .addToCart(obj);
                           Navigator.pop(context);
                         }
-
-                        // if (widget.name != null && counter > 0) {
-                        //   Provider.of<CartProvider>(context, listen: false)
-                        //       .addToCart(obj);
-                        //   setState(() {});
-                        //   Navigator.pop(context);
-                        // }
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -193,7 +186,7 @@ class _DetailsState extends State<Details> {
                         height: 45,
                         child: Center(
                             child: Text(
-                          'Buy',
+                          'Add to cart',
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,

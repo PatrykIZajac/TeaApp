@@ -54,4 +54,8 @@ class CartProvider extends ChangeNotifier {
         cartModel.name, cartModel.price, result, cartModel.imgURL);
     notifyListeners();
   }
+
+  int getCountOfCart() {
+    return _cart.length;
+  }
 }

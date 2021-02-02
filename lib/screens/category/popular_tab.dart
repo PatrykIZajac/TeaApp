@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tea_app/models/tea_model.dart';
+import 'package:tea_app/providers/favorite_provider.dart';
 import 'package:tea_app/providers/tea_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -93,23 +94,60 @@ class _PopularTabState extends State<PopularTab> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 15),
                             ),
-                            InkWell(
-                              onTap: () {
-                                print("Tapped add button");
+                            Consumer<FavoriteProvider>(
+                              builder: (context, favorite, child) {
+                                int indexOf = favorite.favorites.indexWhere(
+                                    (element) =>
+                                        element.name == teas[index].name);
+                                if (indexOf == -1) {
+                                  return InkWell(
+                                    onTap: () async {
+                                      TeaModel obj = TeaModel(
+                                        name: teas[index].name,
+                                        price: teas[index].price,
+                                        imgURL: teas[index].imgURL,
+                                        description: teas[index].description,
+                                        originCountry:
+                                            teas[index].originCountry,
+                                        brewTemp: teas[index].brewTemp,
+                                        brewTime: teas[index].brewTime,
+                                      );
+                                      Provider.of<FavoriteProvider>(context,
+                                              listen: false)
+                                          .addToFavorite(obj);
+                                    },
+                                    child: Container(
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                      ),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              width: 1.0,
+                                              color: Colors.grey[400]),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          color: Colors.grey[400]),
+                                      width: 30,
+                                    ),
+                                  );
+                                } else {
+                                  return Container(
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                    ),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            width: 1.0,
+                                            color: Colors.grey[400]),
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: Theme.of(context).primaryColor),
+                                    width: 30,
+                                  );
+                                }
                               },
-                              child: Container(
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                ),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        width: 1.0, color: Colors.grey[400]),
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.grey[400]),
-                                width: 30,
-                              ),
-                            ),
+                            )
                           ],
                         ),
                       )

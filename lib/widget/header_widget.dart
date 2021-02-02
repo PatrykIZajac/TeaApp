@@ -63,8 +63,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                             foregroundColor: Colors.white,
                             child: Text(
                               Provider.of<CartProvider>(context, listen: true)
-                                  .cart
-                                  .length
+                                  .getCountOfCart()
                                   .toString(),
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
