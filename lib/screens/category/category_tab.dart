@@ -1,6 +1,11 @@
+import 'package:commons/commons.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:tea_app/models/cart_model.dart';
 import 'package:tea_app/models/tea_model.dart';
+import 'package:tea_app/providers/cart_provider.dart';
 import 'package:tea_app/providers/favorite_provider.dart';
 import 'package:tea_app/providers/tea_provider.dart';
 import 'package:tea_app/screens/details.dart';
@@ -20,7 +25,6 @@ class CategoryTab extends StatefulWidget {
 class _CategoryTabState extends State<CategoryTab>
     with TickerProviderStateMixin {
   List<TeaModel> teas = [];
-  TeaModel _favoriteModel;
 
   @override
   void initState() {
@@ -51,72 +55,148 @@ class _CategoryTabState extends State<CategoryTab>
             gridDelegate:
                 SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             itemBuilder: (context, index) {
-              return Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                color: Color(0xFFF1F1F1),
-                child: InkWell(
-                  splashColor: Theme.of(context).primaryColor,
-                  onTap: () {
-                    print('tapped on card');
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Details(
-                                name: teas[index].name,
-                                description: teas[index].description,
-                                imageUrl: teas[index].imgURL,
-                                price: teas[index].price,
-                              )),
-                    );
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-                          child: Image.network(
-                            teas[index].imgURL,
+              return Padding(
+                padding: const EdgeInsets.all(5),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  color: Color(0xFFF1F1F1),
+                  child: InkWell(
+                    splashColor: Theme.of(context).primaryColor,
+                    onTap: () {
+                      print('tapped on card');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Details(
+                                  name: teas[index].name,
+                                  description: teas[index].description,
+                                  imageUrl: teas[index].imgURL,
+                                  price: teas[index].price,
+                                )),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20),
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.2,
+                                  child: Text(teas[index].name,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 13)),
+                                ),
+                              ),
+                              Consumer<FavoriteProvider>(
+                                builder: (context, favorite, child) {
+                                  int indexOf = favorite.favorites.indexWhere(
+                                      (element) =>
+                                          element.name == teas[index].name);
+                                  if (indexOf == -1) {
+                                    return IconButton(
+                                      icon: Icon(Icons.favorite,
+                                          color: Colors.grey[400]),
+                                      onPressed: () async {
+                                        TeaModel obj = TeaModel(
+                                          name: teas[index].name,
+                                          price: teas[index].price,
+                                          imgURL: teas[index].imgURL,
+                                          description: teas[index].description,
+                                          originCountry:
+                                              teas[index].originCountry,
+                                          brewTemp: teas[index].brewTemp,
+                                          brewTime: teas[index].brewTime,
+                                        );
+                                        Provider.of<FavoriteProvider>(context,
+                                                listen: false)
+                                            .addToFavorite(obj);
+                                      },
+                                    );
+                                  } else {
+                                    return IconButton(
+                                      icon: Icon(
+                                        Icons.favorite,
+                                        color: Colors.red,
+                                      ),
+                                    );
+                                  }
+                                },
+                              )
+                            ],
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5.0),
-                        child: Text(teas[index].name,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 5, 10, 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '\$ ${teas[index].price.toString()}',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                            child: Image.network(
+                              teas[index].imgURL,
                             ),
-                            Consumer<FavoriteProvider>(
-                              builder: (context, favorite, child) {
-                                int indexOf = favorite.favorites.indexWhere(
-                                    (element) =>
-                                        element.name == teas[index].name);
-                                if (indexOf == -1) {
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 5, 10, 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '\$ ${teas[index].price.toString()}',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 18),
+                              ),
+                              Consumer<FavoriteProvider>(
+                                builder: (context, favorite, child) {
                                   return InkWell(
                                     onTap: () async {
-                                      TeaModel obj = TeaModel(
-                                        name: teas[index].name,
-                                        price: teas[index].price,
+                                      CartModel obj = CartModel(
                                         imgURL: teas[index].imgURL,
-                                        description: teas[index].description,
-                                        originCountry:
-                                            teas[index].originCountry,
-                                        brewTemp: teas[index].brewTemp,
-                                        brewTime: teas[index].brewTime,
+                                        price: teas[index].price,
+                                        name: teas[index].name,
+                                        count: 1,
                                       );
-                                      Provider.of<FavoriteProvider>(context,
+                                      print("ADDED TO CART");
+                                      String name = teas[index].name;
+
+                                      var status = Provider.of<CartProvider>(
+                                              context,
                                               listen: false)
-                                          .addToFavorite(obj);
+                                          .cart
+                                          .where((element) =>
+                                              element.name == teas[index].name);
+
+                                      if (status.isNotEmpty) {
+                                        await Provider.of<CartProvider>(context,
+                                                listen: false)
+                                            .updateById(obj, 1);
+                                        Fluttertoast.showToast(
+                                            msg: "This is Center Short Toast",
+                                            toastLength: Toast.LENGTH_SHORT,
+                                            gravity: ToastGravity.CENTER,
+                                            timeInSecForIosWeb: 1,
+                                            backgroundColor: Colors.red,
+                                            textColor: Colors.white,
+                                            fontSize: 16.0);
+                                      } else {
+                                        await Provider.of<CartProvider>(context,
+                                                listen: false)
+                                            .addToCart(obj);
+                                        String name = teas[index].name;
+                                        Fluttertoast.showToast(
+                                            msg: "This is Center Short Toast",
+                                            toastLength: Toast.LENGTH_SHORT,
+                                            gravity: ToastGravity.CENTER,
+                                            timeInSecForIosWeb: 1,
+                                            backgroundColor: Colors.red,
+                                            textColor: Colors.white,
+                                            fontSize: 16.0);
+                                      }
                                     },
                                     child: Container(
                                       child: Icon(
@@ -126,34 +206,20 @@ class _CategoryTabState extends State<CategoryTab>
                                       decoration: BoxDecoration(
                                           border: Border.all(
                                               width: 1.0,
-                                              color: Colors.grey[400]),
+                                              color: Colors.transparent),
                                           borderRadius:
                                               BorderRadius.circular(5),
                                           color: Colors.grey[400]),
                                       width: 30,
                                     ),
                                   );
-                                } else {
-                                  return Container(
-                                    child: Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                    ),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 1.0,
-                                            color: Colors.grey[400]),
-                                        borderRadius: BorderRadius.circular(5),
-                                        color: Theme.of(context).primaryColor),
-                                    width: 30,
-                                  );
-                                }
-                              },
-                            )
-                          ],
-                        ),
-                      )
-                    ],
+                                },
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               );

@@ -11,24 +11,27 @@ class FavoriteProvider extends ChangeNotifier {
   }
 
   Future<void> _initFavorites() async {
-    _favorites.addAll(await Dbfav.getFavorites());
+    _favorites.addAll(await DbFav.getFavorites());
+    print("Dodano");
     notifyListeners();
   }
 
   Future<TeaModel> addToFavorite(TeaModel favoriteModel) async {
-    TeaModel insertedModel = await Dbfav.insertFavorite(favoriteModel);
+    TeaModel insertedModel = await DbFav.insertFavorite(favoriteModel);
     _favorites.add(insertedModel);
     notifyListeners();
   }
 
   Future<void> deleteFromFavorite(TeaModel favoriteModel) async {
     _favorites.remove(favoriteModel);
-    await Dbfav.deleteFavorite(favoriteModel);
+    await DbFav.deleteFavorite(favoriteModel);
+    print('PROV DELETE');
     notifyListeners();
   }
 
   Future<void> deleteById(int id) async {
     _favorites.removeWhere((element) => element.id == id);
+    print('PROV DELETE ZWYKLY');
     notifyListeners();
   }
 }

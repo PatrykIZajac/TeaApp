@@ -108,9 +108,7 @@ class _DetailsState extends State<Details> {
                       children: [
                         InkWell(
                           onTap: () {
-                            // print('-');
                             decrementCounter();
-                            // print("counter: $counter");
                           },
                           child: Container(
                             child: Icon(Icons.remove),
@@ -130,9 +128,7 @@ class _DetailsState extends State<Details> {
                         ),
                         InkWell(
                           onTap: () {
-                            // print('+');
                             incrementCounter();
-                            // print("counter: $counter");
                           },
                           child: Container(
                             child: Icon(Icons.add),
@@ -167,10 +163,8 @@ class _DetailsState extends State<Details> {
                           await Provider.of<CartProvider>(context,
                                   listen: false)
                               .updateById(obj, counter);
-                          // print("UPDATE");
                           Navigator.pop(context);
                         } else {
-                          // print("ADD");
                           await Provider.of<CartProvider>(context,
                                   listen: false)
                               .addToCart(obj);

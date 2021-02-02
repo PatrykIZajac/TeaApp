@@ -38,7 +38,7 @@ class TeaModel {
         name: map[i]['name'],
         price: map[i]['price'],
         imgURL: map[i]['imgURL'],
-        brewTime: map[i]['brewTime'],
+        brewTime: map[i]['brewTime'].toString(),
         brewTemp: map[i]['brewTemp'],
         originCountry: map[i]['originCountry'],
         description: map[i]['description'],
@@ -47,12 +47,12 @@ class TeaModel {
   }
 
   TeaModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = int.parse(json['id'].toString());
     name = json['name'];
-    price = json['price'];
+    price = double.parse(json['price'].toString());
     imgURL = json['imgURL'];
     brewTime = json['brewTime'];
-    brewTemp = json['brewTemp'];
+    brewTemp = int.parse(json['brewTemp'].toString());
     originCountry = json['originCountry'];
     description = json['description'];
   }

@@ -1,3 +1,4 @@
+import 'package:commons/commons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -145,6 +146,12 @@ class _CartScreenState extends State<CartScreen> {
                             .deleteAllItems();
                         setState(() {});
                         Navigator.pop(context);
+                        successDialog(
+                          context,
+                          "Success message",
+                          negativeAction: () {},
+                          positiveAction: () {},
+                        );
                       },
                       child: Container(
                         decoration: BoxDecoration(

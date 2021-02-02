@@ -20,15 +20,15 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function>{
-        "ChinaText": MessageLookupByLibrary.simpleMessage("China"),
-        "CurrencyText": MessageLookupByLibrary.simpleMessage("Currency"),
-        "IndiaText": MessageLookupByLibrary.simpleMessage("Brazil"),
-        "LanguageText": MessageLookupByLibrary.simpleMessage("Language"),
-        "PopularText": MessageLookupByLibrary.simpleMessage("Popular"),
-        "SearchText": MessageLookupByLibrary.simpleMessage("Search"),
-        "ShopNameText": MessageLookupByLibrary.simpleMessage("Tea Shop"),
-        "SriLankaText": MessageLookupByLibrary.simpleMessage("Sri Lanka"),
-        "WelcomeText": MessageLookupByLibrary.simpleMessage("Welcome to")
-      };
+  static _notInlinedMessages(_) => <String, Function> {
+    "ChinaText" : MessageLookupByLibrary.simpleMessage("China"),
+    "CurrencyText" : MessageLookupByLibrary.simpleMessage("Currency"),
+    "IndiaText" : MessageLookupByLibrary.simpleMessage("India"),
+    "LanguageText" : MessageLookupByLibrary.simpleMessage("Language"),
+    "PopularText" : MessageLookupByLibrary.simpleMessage("Popular"),
+    "SearchText" : MessageLookupByLibrary.simpleMessage("Search"),
+    "ShopNameText" : MessageLookupByLibrary.simpleMessage("Tea Shop"),
+    "SriLankaText" : MessageLookupByLibrary.simpleMessage("Sri Lanka"),
+    "WelcomeText" : MessageLookupByLibrary.simpleMessage("Welcome to")
+  };
 }

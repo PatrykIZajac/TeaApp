@@ -12,9 +12,9 @@ import 'generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Dbfav().init();
   await Db().init();
   await UserPreferences().init();
+  await DbFav().init();
   runApp(MultiProvider(
     providers: [
       ListenableProvider<TeaProvider>(create: (_) => TeaProvider()),
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Tea shop app',
       theme: _lightTheme,
       localizationsDelegates: [
         S.delegate,

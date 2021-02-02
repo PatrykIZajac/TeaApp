@@ -2,19 +2,20 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:tea_app/models/tea_model.dart';
 
-class Dbfav {
-  static Dbfav _instance = Dbfav._internal();
+class DbFav {
+  static DbFav _instance = DbFav._internal();
   Database _database;
 
   static final String tableFavorite = 'Favorite';
 
-  factory Dbfav() {
+  factory DbFav() {
     return _instance;
   }
 
-  Dbfav._internal() {}
+  DbFav._internal() {}
 
   init() async {
+    print("INIT");
     _database = await openDatabase(
         join(await getDatabasesPath(), 'databaseFav.db'),
         version: 1, onCreate: (Database database, int version) async {
@@ -31,23 +32,26 @@ class Dbfav {
   }
 
   static Future<TeaModel> insertFavorite(TeaModel teaModel) async {
-    teaModel.id = await Dbfav().getDatabase().insert(
+    teaModel.id = await DbFav().getDatabase().insert(
         tableFavorite, teaModel.toMap(),
         conflictAlgorithm: ConflictAlgorithm.fail);
+    print('DB ADDED');
     return teaModel;
   }
 
+  static Future<int> deleteById(int id) async {
+    print('DB DELETE 2');
+    return await DbFav()
+        .getDatabase()
+        .delete(tableFavorite, where: 'id=?', whereArgs: [id]);
+  }
+
   static Future<int> deleteFavorite(TeaModel favoriteModel) async {
+    print('DB DELETE 1');
     return deleteById(favoriteModel.id);
   }
 
   static Future<List<TeaModel>> getFavorites() async {
-    return TeaModel.fromMap(await Dbfav().getDatabase().query(tableFavorite));
-  }
-
-  static Future<int> deleteById(int id) async {
-    return await Dbfav()
-        .getDatabase()
-        .delete(tableFavorite, where: 'id=?', whereArgs: [id]);
+    return TeaModel.fromMap(await DbFav().getDatabase().query(tableFavorite));
   }
 }

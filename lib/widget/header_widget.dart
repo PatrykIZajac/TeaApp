@@ -51,7 +51,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                         Icons.shopping_cart,
                         size: 36.0,
                       ),
-                      if (Provider.of<CartProvider>(context, listen: false)
+                      if (Provider.of<CartProvider>(context, listen: true)
                               .cart
                               .length >
                           0)
