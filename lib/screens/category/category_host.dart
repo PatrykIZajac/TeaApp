@@ -60,7 +60,7 @@ class _CategoryHostState extends State<CategoryHost>
             text: '${delegate.ChinaText}',
           ),
           Tab(
-            text: '${delegate.IndiaText}',
+            text: '${delegate.BrazilText}',
           ),
           Tab(
             text: '${delegate.SriLankaText}',

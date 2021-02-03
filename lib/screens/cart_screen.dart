@@ -49,7 +49,7 @@ class _CartScreenState extends State<CartScreen> {
                             onDismissed: (direction) {
                               print("Dismised" + item.name);
                               Provider.of<CartProvider>(context, listen: false)
-                                  .deleteById(item.id);
+                                  .deleteFromCart(item);
                               setState(() {});
                               if (Provider.of<CartProvider>(context,
                                           listen: false)

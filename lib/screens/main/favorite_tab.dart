@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tea_app/models/tea_model.dart';
 import 'package:tea_app/providers/favorite_provider.dart';
 
 import '../details.dart';
@@ -23,7 +22,11 @@ class _FavoriteTabState extends State<FavoriteTab> {
     var teas = Provider.of<FavoriteProvider>(context, listen: false).favorites;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorites'),
+        title: Center(
+            child: Text(
+          'Favorites',
+          style: TextStyle(color: Colors.white, fontSize: 25),
+        )),
       ),
       body: RefreshIndicator(
         onRefresh: () async {
@@ -82,24 +85,6 @@ class _FavoriteTabState extends State<FavoriteTab> {
                                     color: Colors.red,
                                   ),
                                   onPressed: () {
-                                    TeaModel obj = TeaModel(
-                                      name: teas[index].name,
-                                      description: teas[index].description,
-                                      originCountry: teas[index].originCountry,
-                                      brewTemp: teas[index].brewTemp,
-                                      brewTime: teas[index].brewTime,
-                                      price: teas[index].price,
-                                      imgURL: teas[index].imgURL,
-                                    );
-                                    print(obj.name);
-                                    // Provider.of<FavoriteProvider>(context,
-                                    //         listen: false)
-                                    //     .deleteById(
-                                    //         Provider.of<FavoriteProvider>(
-                                    //                 context,
-                                    //                 listen: false)
-                                    //             .favorites[index]
-                                    //             .id);
                                     Provider.of<FavoriteProvider>(context,
                                             listen: false)
                                         .deleteFromFavorite(teas[index]);

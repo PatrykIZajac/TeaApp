@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:tea_app/models/cart_model.dart';
 import 'package:tea_app/models/tea_model.dart';
+import 'package:tea_app/providers/cart_provider.dart';
 import 'package:tea_app/providers/favorite_provider.dart';
 import 'package:tea_app/providers/tea_provider.dart';
 import 'package:provider/provider.dart';
@@ -82,11 +85,11 @@ class _PopularTabState extends State<PopularTab> {
                                 padding: const EdgeInsets.only(left: 20),
                                 child: Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.25,
+                                      MediaQuery.of(context).size.width * 0.2,
                                   child: Text(teas[index].name,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 14)),
+                                          fontSize: 13)),
                                 ),
                               ),
                               Consumer<FavoriteProvider>(
@@ -148,22 +151,81 @@ class _PopularTabState extends State<PopularTab> {
                               Consumer<FavoriteProvider>(
                                 builder: (context, favorite, child) {
                                   return InkWell(
-                                    onTap: () {
+                                    onTap: () async {
+                                      CartModel obj = CartModel(
+                                        imgURL: teas[index].imgURL,
+                                        price: teas[index].price,
+                                        name: teas[index].name,
+                                        count: 1,
+                                      );
                                       print("ADDED TO CART");
+
+                                      var status = Provider.of<CartProvider>(
+                                              context,
+                                              listen: false)
+                                          .cart
+                                          .where((element) =>
+                                              element.name == teas[index].name);
+
+                                      if (status.isNotEmpty) {
+                                        await Provider.of<CartProvider>(context,
+                                                listen: false)
+                                            .updateById(obj, 1);
+                                      } else {
+                                        await Provider.of<CartProvider>(context,
+                                                listen: false)
+                                            .addToCart(obj);
+                                      }
+                                      String name = teas[index].name;
+                                      Fluttertoast.showToast(
+                                          msg: "Added $name to cart!",
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor:
+                                              Theme.of(context).primaryColor,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0);
                                     },
-                                    child: Container(
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1.0,
-                                              color: Colors.transparent),
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          color: Colors.grey[400]),
-                                      width: 30,
+                                    child: Consumer<CartProvider>(
+                                      builder: (context, cart, child) {
+                                        int indexOf = cart.cart.indexWhere(
+                                            (element) =>
+                                                element.name ==
+                                                teas[index].name);
+                                        if (indexOf == -1) {
+                                          return Container(
+                                            child: Icon(
+                                              Icons.add,
+                                              color: Colors.white,
+                                            ),
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    width: 1.0,
+                                                    color: Colors.transparent),
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                color: Colors.grey[400]),
+                                            width: 30,
+                                          );
+                                        } else {
+                                          return Container(
+                                            child: Icon(
+                                              Icons.add,
+                                              color: Colors.white,
+                                            ),
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    width: 1.0,
+                                                    color: Colors.transparent),
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                color: Theme.of(context)
+                                                    .primaryColor),
+                                            width: 30,
+                                          );
+                                        }
+                                      },
                                     ),
                                   );
                                 },
