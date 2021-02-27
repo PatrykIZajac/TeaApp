@@ -145,7 +145,9 @@ class _CategoryTabState extends State<CategoryTab>
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                '\$ ${teas[index].price.toString()}',
+                                teas[index]
+                                    .getCurrency(teas[index].price)
+                                    .toString(),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 18),
                               ),

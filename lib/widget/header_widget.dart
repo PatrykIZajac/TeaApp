@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:tea_app/generated/l10n.dart';
+import 'package:tea_app/models/tea_model.dart';
 import 'package:tea_app/providers/cart_provider.dart';
+import 'package:tea_app/providers/tea_provider.dart';
 import 'package:tea_app/screens/cart_screen.dart';
+import 'package:tea_app/screens/details.dart';
 
 class HeaderWidget extends StatefulWidget with PreferredSizeWidget {
   @override
@@ -29,7 +33,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
   Widget build(BuildContext context) {
     final delegate = S.of(context);
     return Padding(
-      padding: const EdgeInsets.only(top: 30, left: 16, right: 16),
+      padding: const EdgeInsets.all(15),
       child: Container(
         child: Column(
           children: [
@@ -97,15 +101,48 @@ class _HeaderWidgetState extends State<HeaderWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 25.0),
+              padding: const EdgeInsets.only(top: 15.0),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: Color(0xFFF1F1F1),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(5.0),
+                  padding: const EdgeInsets.fromLTRB(5, 3, 5, 5),
                   child: TextField(
+                    onSubmitted: (String input) async {
+                      await Provider.of<TeaProvider>(context, listen: false)
+                          .getTeaByName(input);
+
+                      TeaModel obj =
+                          Provider.of<TeaProvider>(context, listen: false)
+                              .specificTea;
+
+                      if (obj != null) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Details(
+                                    name: obj.name,
+                                    description: obj.description,
+                                    imageUrl: obj.imgURL,
+                                    price: obj.price,
+                                  )),
+                        );
+                        clearTextInput();
+                      } else {
+                        return Fluttertoast.showToast(
+                            msg: "Sprawdz pisownie i spróbuj ponownie",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.redAccent,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                      }
+                      Provider.of<TeaProvider>(context, listen: false)
+                          .specificTea = null;
+                    },
                     cursorColor: Theme.of(context).primaryColor,
                     controller: nameHolder,
                     decoration: InputDecoration(

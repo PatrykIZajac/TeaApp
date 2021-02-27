@@ -37,13 +37,15 @@ class _HomeScreen extends State<HomeScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      body: TabBarView(
-        children: <Widget>[
-          FavoriteTab(),
-          StartTab(),
-          SettingsTab(),
-        ],
-        controller: controllerInMain,
+      body: SafeArea(
+        child: TabBarView(
+          children: <Widget>[
+            FavoriteTab(),
+            StartTab(),
+            SettingsTab(),
+          ],
+          controller: controllerInMain,
+        ),
       ),
       bottomNavigationBar: TabBar(
         controller: controllerInMain,

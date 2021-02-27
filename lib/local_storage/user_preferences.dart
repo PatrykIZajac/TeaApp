@@ -7,10 +7,10 @@ class UserPreferences {
     return _instance;
   }
 
-  static const dolar = '0';
-  static const pound = '1';
-  static const zloty = '2';
-  static const euro = '3';
+  static const dolar = 'USD';
+  static const pound = 'GBP';
+  static const zloty = 'PLN';
+  static const euro = 'Euro';
 
   UserPreferences._ctor();
 

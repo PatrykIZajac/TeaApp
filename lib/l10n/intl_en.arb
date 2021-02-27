@@ -7,5 +7,14 @@
   "ChinaText": "China",
   "IndiaText": "India",
   "SriLankaText": "Sri Lanka",
-  "CurrencyText": "Currency"
+  "CurrencyText": "Currency",
+  "FavoriteText": "Favorites",
+  "SettingsText": "Settings",
+  "ContinuePaymentText": "Continue payment",
+  "ShoppingCartText" : "Shopping cart",
+  "QuantityCartItem" : "qty.",
+  "AddToCartText" : "Add to cart",
+  "AmountInAlertDialogText": "Amount of",
+  "AcceptButtonInAlertDialogText": "Accept",
+  "CancelButtonInAlertDialogText": "Cancel"
 }

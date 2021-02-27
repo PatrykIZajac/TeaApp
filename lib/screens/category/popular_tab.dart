@@ -144,7 +144,9 @@ class _PopularTabState extends State<PopularTab> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                '\$ ${teas[index].price.toString()}',
+                                teas[index]
+                                    .getCurrency(teas[index].price)
+                                    .toString(),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 18),
                               ),

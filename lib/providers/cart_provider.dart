@@ -55,6 +55,20 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> changeCountOfItem(CartModel cartModel, amount) async {
+    int index = _cart.indexWhere((element) => element.name == cartModel.name);
+    if (index != -1) {
+      _cart[index].name = cartModel.name;
+      _cart[index].count = amount;
+      _cart[index].imgURL = cartModel.imgURL;
+      _cart[index].price = cartModel.price;
+    }
+
+    await Db.updateByID(
+        cartModel.name, cartModel.price, amount, cartModel.imgURL);
+    notifyListeners();
+  }
+
   int getCountOfCart() {
     return _cart.length;
   }

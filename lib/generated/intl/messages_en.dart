@@ -20,15 +20,24 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function>{
-        "ChinaText": MessageLookupByLibrary.simpleMessage("China"),
-        "CurrencyText": MessageLookupByLibrary.simpleMessage("Currency"),
-        "BrazilText": MessageLookupByLibrary.simpleMessage("Brazil"),
-        "LanguageText": MessageLookupByLibrary.simpleMessage("Language"),
-        "PopularText": MessageLookupByLibrary.simpleMessage("Popular"),
-        "SearchText": MessageLookupByLibrary.simpleMessage("Search"),
-        "ShopNameText": MessageLookupByLibrary.simpleMessage("Tea Shop"),
-        "SriLankaText": MessageLookupByLibrary.simpleMessage("Sri Lanka"),
-        "WelcomeText": MessageLookupByLibrary.simpleMessage("Welcome to")
-      };
+  static _notInlinedMessages(_) => <String, Function> {
+    "AcceptButtonInAlertDialogText" : MessageLookupByLibrary.simpleMessage("Accept"),
+    "AddToCartText" : MessageLookupByLibrary.simpleMessage("Add to cart"),
+    "AmountInAlertDialogText" : MessageLookupByLibrary.simpleMessage("Amount of"),
+    "CancelButtonInAlertDialogText" : MessageLookupByLibrary.simpleMessage("Cancel"),
+    "ChinaText" : MessageLookupByLibrary.simpleMessage("China"),
+    "ContinuePaymentText" : MessageLookupByLibrary.simpleMessage("Continue payment"),
+    "CurrencyText" : MessageLookupByLibrary.simpleMessage("Currency"),
+    "FavoriteText" : MessageLookupByLibrary.simpleMessage("Favorites"),
+    "IndiaText" : MessageLookupByLibrary.simpleMessage("India"),
+    "LanguageText" : MessageLookupByLibrary.simpleMessage("Language"),
+    "PopularText" : MessageLookupByLibrary.simpleMessage("Popular"),
+    "QuantityCartItem" : MessageLookupByLibrary.simpleMessage("qty."),
+    "SearchText" : MessageLookupByLibrary.simpleMessage("Search"),
+    "SettingsText" : MessageLookupByLibrary.simpleMessage("Settings"),
+    "ShopNameText" : MessageLookupByLibrary.simpleMessage("Tea Shop"),
+    "ShoppingCartText" : MessageLookupByLibrary.simpleMessage("Shopping cart"),
+    "SriLankaText" : MessageLookupByLibrary.simpleMessage("Sri Lanka"),
+    "WelcomeText" : MessageLookupByLibrary.simpleMessage("Welcome to")
+  };
 }
