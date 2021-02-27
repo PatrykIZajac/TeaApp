@@ -5,7 +5,6 @@ import 'package:tea_app/generated/l10n.dart';
 import 'package:tea_app/models/cart_model.dart';
 import 'package:tea_app/providers/cart_provider.dart';
 import 'package:tea_app/providers/favorite_provider.dart';
-
 import '../details.dart';
 
 class FavoriteTab extends StatefulWidget {
@@ -54,7 +53,7 @@ class _FavoriteTabState extends State<FavoriteTab> {
                     child: InkWell(
                       splashColor: Theme.of(context).primaryColor,
                       onTap: () {
-                        print('tapped on card');
+                        // print('tapped on card');
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -130,7 +129,6 @@ class _FavoriteTabState extends State<FavoriteTab> {
                                           name: teas[index].name,
                                           count: 1,
                                         );
-                                        print("ADDED TO CART");
 
                                         var status = Provider.of<CartProvider>(
                                                 context,
@@ -207,29 +205,6 @@ class _FavoriteTabState extends State<FavoriteTab> {
                                     );
                                   },
                                 )
-                                // Consumer<FavoriteProvider>(
-                                //   builder: (context, favorite, child) {
-                                //     return InkWell(
-                                //       onTap: () {
-                                //         print("ADDED TO CART");
-                                //       },
-                                //       child: Container(
-                                //         child: Icon(
-                                //           Icons.add,
-                                //           color: Colors.white,
-                                //         ),
-                                //         decoration: BoxDecoration(
-                                //             border: Border.all(
-                                //                 width: 1.0,
-                                //                 color: Colors.transparent),
-                                //             borderRadius:
-                                //                 BorderRadius.circular(5),
-                                //             color: Colors.grey[400]),
-                                //         width: 30,
-                                //       ),
-                                //     );
-                                //   },
-                                // )
                               ],
                             ),
                           )

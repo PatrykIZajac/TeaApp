@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tea_app/generated/l10n.dart';
 import 'package:tea_app/screens/category/category_tab.dart';
-import 'package:tea_app/screens/category/popular_tab.dart';
 
 class CategoryHost extends StatefulWidget {
   @override
@@ -40,7 +39,7 @@ class _CategoryHostState extends State<CategoryHost>
       resizeToAvoidBottomPadding: false,
       body: TabBarView(
         children: <Widget>[
-          PopularTab(countryName: 'popular'),
+          CategoryTab(countryName: 'popular'),
           CategoryTab(countryName: 'China'),
           CategoryTab(countryName: 'Brazil'),
           CategoryTab(countryName: 'Sri Lanka'),

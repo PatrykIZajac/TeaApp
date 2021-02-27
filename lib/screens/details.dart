@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tea_app/generated/l10n.dart';
 import 'package:tea_app/models/cart_model.dart';
-import 'package:tea_app/models/tea_model.dart';
 import 'package:tea_app/providers/cart_provider.dart';
 import 'package:tea_app/providers/tea_provider.dart';
 
