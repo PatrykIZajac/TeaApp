@@ -147,10 +147,12 @@ class _CartScreenState extends State<CartScreen> {
         child: Consumer<CartProvider>(builder: (context, cart, child) {
           return Scaffold(
               appBar: AppBar(
+                iconTheme: IconThemeData(color: Colors.white),
                 title: Text(
                   '${delegate.ShoppingCartText}',
+                  style: TextStyle(color: Colors.white),
                 ),
-                backgroundColor: Colors.white,
+                backgroundColor: Theme.of(context).primaryColor,
                 elevation: 0,
               ),
               body: Padding(

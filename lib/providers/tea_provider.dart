@@ -28,7 +28,7 @@ class TeaProvider extends ChangeNotifier {
           });
         }
         teas[place] = list;
-        print(list.length);
+        // print(list.length);
         return teas[place];
       }
     } catch (error) {

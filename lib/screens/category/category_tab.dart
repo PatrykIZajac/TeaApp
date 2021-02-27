@@ -40,7 +40,7 @@ class _CategoryTabState extends State<CategoryTab>
     return RefreshIndicator(
       onRefresh: () async {
         await initList(true);
-        print(widget.countryName);
+        // print(widget.countryName);
       },
       child: Padding(
         padding: const EdgeInsets.fromLTRB(15, 30, 15, 0),
