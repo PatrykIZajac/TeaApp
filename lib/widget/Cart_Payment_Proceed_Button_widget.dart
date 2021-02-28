@@ -41,7 +41,7 @@ class _CartPaymentProceedButtonState extends State<CartPaymentProceedButton> {
   Widget build(BuildContext context) {
     final delegate = S.of(context);
     return Padding(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 20),
       child: InkWell(
         onTap: () async {
           await Provider.of<CartProvider>(context, listen: false)
@@ -52,7 +52,7 @@ class _CartPaymentProceedButtonState extends State<CartPaymentProceedButton> {
           showDialog(
               context: context,
               builder: (context) {
-                Future.delayed(Duration(milliseconds: 200), () {
+                Future.delayed(Duration(milliseconds: 400), () {
                   Navigator.of(context).pop(true);
                 });
                 return Padding(
@@ -78,12 +78,20 @@ class _CartPaymentProceedButtonState extends State<CartPaymentProceedButton> {
           width: MediaQuery.of(context).size.width * 0.8,
           height: MediaQuery.of(context).size.height * 0.1,
           child: Center(
+              child: FittedBox(
+            fit: BoxFit.fitWidth,
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
               child: Text(
-            '${delegate.ContinuePaymentText} (' +
-                getTotalCost().toString() +
-                ')',
-            style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                '${delegate.ContinuePaymentText} (' +
+                    getTotalCost().toString() +
+                    ')',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+            ),
           )),
         ),
       ),

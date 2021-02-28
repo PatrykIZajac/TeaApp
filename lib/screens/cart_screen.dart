@@ -206,7 +206,7 @@ class _CartScreenState extends State<CartScreen> {
                                       children: [
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              top: 10, bottom: 10),
+                                              top: 10, bottom: 5),
                                           child: InkWell(
                                             onTap: () {
                                               // print("Tapped item");

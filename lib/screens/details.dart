@@ -79,13 +79,12 @@ class _DetailsState extends State<Details> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         child: Text(
                           widget.name,
                           style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.w500),
+                              fontSize: 20, fontWeight: FontWeight.w500),
                         ),
                       ),
                       Container(
@@ -93,7 +92,7 @@ class _DetailsState extends State<Details> {
                           borderRadius: BorderRadius.circular(10),
                           color: Theme.of(context).primaryColor,
                         ),
-                        width: 120,
+                        width: MediaQuery.of(context).size.width * 0.35,
                         height: 30,
                         child: Center(
                           child: Text(

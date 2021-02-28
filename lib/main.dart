@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:tea_app/database/cartDB.dart';
@@ -8,6 +9,7 @@ import 'package:tea_app/providers/cart_provider.dart';
 import 'package:tea_app/providers/favorite_provider.dart';
 import 'package:tea_app/providers/tea_provider.dart';
 import 'package:tea_app/screens/main/home_screen.dart';
+
 import 'generated/l10n.dart';
 
 void main() async {
@@ -34,6 +36,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return MaterialApp(
       title: 'Tea shop app',
       theme: _lightTheme,

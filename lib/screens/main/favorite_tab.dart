@@ -37,7 +37,7 @@ class _FavoriteTabState extends State<FavoriteTab> {
           print("UPDATE from swipe to refresh - FAVORITE");
         },
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(15, 30, 15, 0),
+          padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
           child: GridView.builder(
               itemCount: teas.length,
               gridDelegate:
@@ -76,11 +76,11 @@ class _FavoriteTabState extends State<FavoriteTab> {
                                   padding: const EdgeInsets.only(left: 10),
                                   child: Container(
                                     width: MediaQuery.of(context).size.width *
-                                        0.25,
+                                        0.20,
                                     child: Text(teas[index].name,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 14)),
+                                            fontSize: 13)),
                                   ),
                                 ),
                                 IconButton(
@@ -106,22 +106,28 @@ class _FavoriteTabState extends State<FavoriteTab> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(20, 5, 10, 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  teas[index]
-                                      .getCurrency(teas[index].price)
-                                      .toString(),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: FittedBox(
+                                  fit: BoxFit.fitHeight,
+                                  child: Text(
+                                    teas[index]
+                                        .getCurrency(teas[index].price)
+                                        .toString(),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15),
+                                  ),
                                 ),
-                                Consumer<FavoriteProvider>(
-                                  builder: (context, favorite, child) {
-                                    return InkWell(
+                              ),
+                              Consumer<FavoriteProvider>(
+                                builder: (context, favorite, child) {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: InkWell(
                                       onTap: () async {
                                         CartModel obj = CartModel(
                                           imgURL: teas[index].imgURL,
@@ -202,11 +208,11 @@ class _FavoriteTabState extends State<FavoriteTab> {
                                           }
                                         },
                                       ),
-                                    );
-                                  },
-                                )
-                              ],
-                            ),
+                                    ),
+                                  );
+                                },
+                              )
+                            ],
                           )
                         ],
                       ),

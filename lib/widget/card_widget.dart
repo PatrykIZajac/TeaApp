@@ -50,14 +50,14 @@ class _CardWidgetState extends State<CardWidget> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 5),
+                padding: const EdgeInsets.all(3),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 20),
+                      padding: const EdgeInsets.only(left: 10),
                       child: Container(
-                        width: MediaQuery.of(context).size.width * 0.25,
+                        width: MediaQuery.of(context).size.width * 0.20,
                         child: Text(widget.teas[widget.index].name,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 13)),
@@ -108,21 +108,29 @@ class _CardWidgetState extends State<CardWidget> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 5, 10, 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      widget.teas[widget.index]
-                          .getCurrency(widget.teas[widget.index].price)
-                          .toString(),
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Container(
+                      child: FittedBox(
+                        fit: BoxFit.fitHeight,
+                        child: Text(
+                          widget.teas[widget.index]
+                              .getCurrency(widget.teas[widget.index].price)
+                              .toString(),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        ),
+                      ),
                     ),
-                    Consumer<FavoriteProvider>(
-                      builder: (context, favorite, child) {
-                        return InkWell(
+                  ),
+                  Consumer<FavoriteProvider>(
+                    builder: (context, favorite, child) {
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: InkWell(
                           onTap: () async {
                             CartModel obj = CartModel(
                               imgURL: widget.teas[widget.index].imgURL,
@@ -130,8 +138,6 @@ class _CardWidgetState extends State<CardWidget> {
                               name: widget.teas[widget.index].name,
                               count: 1,
                             );
-                            print("ADDED TO CART");
-
                             var status = Provider.of<CartProvider>(context,
                                     listen: false)
                                 .cart
@@ -194,11 +200,11 @@ class _CardWidgetState extends State<CardWidget> {
                               }
                             },
                           ),
-                        );
-                      },
-                    )
-                  ],
-                ),
+                        ),
+                      );
+                    },
+                  )
+                ],
               )
             ],
           ),
