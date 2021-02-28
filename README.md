@@ -6,7 +6,7 @@
 The application is an imitation of an online store in the mobile application version. I wrote this project in order to learn basic state management and local database operations and basic CRUD operations.
 
 ## Some images from app
-![MainScreen](https://github.com/PatrykIZajac/WeatherApp_Flutter/blob/master/Assets/mainScreen.png)
+![MainScreen](https://github.com/PatrykIZajac/TeaApp/blob/master/Assets/mainScreen.png)
 ![FavoriteScreen](https://github.com/PatrykIZajac/TeaApp/blob/master/Assets/favoriteScreen.png)
 ![Settings](https://github.com/PatrykIZajac/TeaApp/blob/master/Assets/settingsScreen.png)
 ![DetailsScreen](https://github.com/PatrykIZajac/TeaApp/blob/master/Assets/detailsScreen.png)
