@@ -1,16 +1,29 @@
-# tea_app
+# TeaApp | Flutter
 
-A new Flutter application.
+[![version](https://img.shields.io/badge/Android_Studio-4.0-green.svg)](https://developer.android.com/studio/)
+[![version](https://img.shields.io/badge/Flutter-1.22.4-blue.svg)](https://flutter.dev/)
 
-## Getting Started
+The application is an imitation of an online store in the mobile application version. I wrote this project in order to learn basic state management and local database operations and basic CRUD operations.
 
-This project is a starting point for a Flutter application.
+## Some images from app
+![MainScreen](https://github.com/PatrykIZajac/WeatherApp_Flutter/blob/master/Assets/mainScreen.png)
+![FavoriteScreen](https://github.com/PatrykIZajac/TeaApp/blob/master/Assets/favoriteScreen.png)
+![Settings](https://github.com/PatrykIZajac/TeaApp/blob/master/Assets/settingsScreen.png)
+![DetailsScreen](https://github.com/PatrykIZajac/TeaApp/blob/master/Assets/detailsScreen.png)
+![CartScreen](https://github.com/PatrykIZajac/TeaApp/blob/master/Assets/cartScreen.png)
+![DialogScreen](https://github.com/PatrykIZajac/TeaApp/blob/master/Assets/dialogInCartScreen.png)
 
-A few resources to get you started if this is your first Flutter project:
+## See app in action in film on youtube!
+[Demo of app](https://www.youtube.com/watch?v=1cksXjNTn2g&feature=youtu.be)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Libraries
+* [intl](https://pub.dev/packages/geolocator)
+* [shared preferences](https://pub.dev/packages/shared_preferences)
+* [http](https://pub.dev/packages/http)
+* [Sqflite](https://pub.dev/packages/sqflite)
+* [flutter toast](https://openweathermap.org/api)
+* [provider](https://pub.dev/packages/provider)
+* MVVM Architecture
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Graphic part inspired by graphics from Dribble, its author is Ripon Ahmed. Check out other works of this talented graphic designer!
+[link to graphics from this project](https://dribbble.com/shots/14681282-Plant-Shop-E-Commerce-App-design/attachments/6378556?mode=media)
