@@ -6,7 +6,7 @@
 The application is an imitation of an online store in the mobile application version. I wrote this project in order to learn basic state management and local database operations and basic CRUD operations.
 
 ## Some images from app
-![MainScreen](https://github.com/PatrykIZajac/WeatherApp_Flutter/blob/master/Assets/mainScreen.png)
+![MainScreen](https://github.com/PatrykIZajac/TeaApp/blob/master/Assets/mainScreen.png)
 ![FavoriteScreen](https://github.com/PatrykIZajac/TeaApp/blob/master/Assets/favoriteScreen.png)
 ![Settings](https://github.com/PatrykIZajac/TeaApp/blob/master/Assets/settingsScreen.png)
 ![DetailsScreen](https://github.com/PatrykIZajac/TeaApp/blob/master/Assets/detailsScreen.png)
@@ -17,11 +17,11 @@ The application is an imitation of an online store in the mobile application ver
 [Demo of app](https://www.youtube.com/watch?v=1cksXjNTn2g&feature=youtu.be)
 
 ## Libraries
-* [intl](https://pub.dev/packages/geolocator)
+* [intl](https://pub.dev/packages/intl)
 * [shared preferences](https://pub.dev/packages/shared_preferences)
 * [http](https://pub.dev/packages/http)
 * [Sqflite](https://pub.dev/packages/sqflite)
-* [flutter toast](https://openweathermap.org/api)
+* [flutter toast](https://pub.dev/packages/fluttertoast)
 * [provider](https://pub.dev/packages/provider)
 * MVVM Architecture
 
