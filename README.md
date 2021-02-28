@@ -17,11 +17,11 @@ The application is an imitation of an online store in the mobile application ver
 [Demo of app](https://www.youtube.com/watch?v=1cksXjNTn2g&feature=youtu.be)
 
 ## Libraries
-* [intl](https://pub.dev/packages/geolocator)
+* [intl](https://pub.dev/packages/intl)
 * [shared preferences](https://pub.dev/packages/shared_preferences)
 * [http](https://pub.dev/packages/http)
 * [Sqflite](https://pub.dev/packages/sqflite)
-* [flutter toast](https://openweathermap.org/api)
+* [flutter toast](https://pub.dev/packages/fluttertoast)
 * [provider](https://pub.dev/packages/provider)
 * MVVM Architecture
 
